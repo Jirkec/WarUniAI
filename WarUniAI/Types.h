@@ -6,7 +6,8 @@
 enum class EErrorCode
 {
     OK,
-    CLIENT_WINDOW_ERROR
+    CLIENT_WINDOW_ERROR,
+    SEND_INPUT_FAILED
 };
 
 enum class EServer

@@ -18,11 +18,13 @@ public:
 	ELang GetLanguage();
 
 	bool IsLoggedIn();
-	void Login(std::string name, std::string password);
+	EErrorCode Login(std::string name, std::string password);
 	void LoginSaved(int numberInList);
+
 
 private:
 	HWND windowHandler;
 
 	EErrorCode Initialize();
+	EErrorCode WriteText(std::string);
 };

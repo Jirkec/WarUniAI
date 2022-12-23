@@ -1,4 +1,5 @@
 #include "ClientInterface.h"
+#include <vector>
 
 ClientInterface::ClientInterface()
 {
@@ -18,6 +19,33 @@ HWND ClientInterface::GetWindow()
     return windowHandler;
 }
 
+EErrorCode ClientInterface::Login(std::string name, std::string password)
+{
+    EErrorCode result = EErrorCode::OK;
+
+    Click(CLIENT_COORDINATIONS.at("login_name_textarea"));
+    result = WriteText(name);
+    if (result == EErrorCode::OK)
+    {
+        Click(CLIENT_COORDINATIONS.at("login_pass_textarea"));
+        result = WriteText(password);
+        if (result == EErrorCode::OK)
+        {
+            Click(CLIENT_COORDINATIONS.at("login_button"));
+        }
+    }
+
+    return result;
+}
+
+void ClientInterface::LoginSaved(int numberInList)
+{    
+    Click({ 
+            CLIENT_COORDINATIONS.at("login_saved").x, 
+            CLIENT_COORDINATIONS.at("login_saved").y + (LOGIN_SAVED_INCREMENT * numberInList) 
+        });
+}
+
 EErrorCode ClientInterface::Initialize()
 {
     EErrorCode result = EErrorCode::OK;
@@ -34,6 +62,27 @@ EErrorCode ClientInterface::Initialize()
     SetForegroundWindow(windowHandler);
     SetActiveWindow(windowHandler);
     SetFocus(windowHandler);
+
+    return result;
+}
+
+EErrorCode ClientInterface::WriteText(std::string text)
+{
+    EErrorCode result = EErrorCode::OK;
+    std::vector<INPUT> inputs;
+    for (int i = 0; i < text.length(); i++)
+    {
+        INPUT tmpInput = { INPUT_KEYBOARD , text.at(i), 0};
+        inputs.push_back(tmpInput);
+    }
+
+    UINT uSent = SendInput(inputs.size(), &inputs[0], sizeof(INPUT));
+    if (uSent != inputs.size())
+    {
+        DWORD last_error = GetLastError();
+        printf("SendInput failed: 0x%x\n", last_error);
+        result = EErrorCode::SEND_INPUT_FAILED;
+    }
 
     return result;
 }
