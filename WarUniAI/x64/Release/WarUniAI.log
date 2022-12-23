@@ -1,0 +1,9 @@
+﻿  ClientInterface.cpp
+  Exception.cpp
+  Main.cpp
+  Types.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 194 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  WarUniAI.vcxproj -> D:\PersonalTasks\WarUniAI\bin\Release\WarUniAI.exe
