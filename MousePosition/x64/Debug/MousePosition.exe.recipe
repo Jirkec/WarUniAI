@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\PersonalTasks\WarUniAI\bin\Debug\WarUniAI.exe</FullPath>
+      <FullPath>D:\git\WarUniAI\bin\Debug\WarUniAI.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\PersonalTasks\WarUniAI\bin\Debug\MousePosition.exe</FullPath>
+      <FullPath>D:\git\WarUniAI\bin\Debug\MousePosition.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
